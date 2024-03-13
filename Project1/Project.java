@@ -1,4 +1,4 @@
-package Projects.Project1;
+package Projects.Project1.Project1;
 
 
 import java.io.BufferedReader;
@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.sql.*;
 
 
-public  class Project implements Developers{
+public  class Project implements Developers {
 
     Connection connection = null;
     private void createTable() throws SQLException {

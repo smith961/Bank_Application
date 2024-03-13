@@ -1,4 +1,4 @@
-package Projects.Project1;
+package Projects.Project1.Project1;
 
 import java.sql.*;
 
