@@ -38,9 +38,9 @@ public class AccountUserService {
         }
     }
 //getByUsername
-    public ResponseEntity<AccountUser>getByUsername(String email){
+    public ResponseEntity<AccountUser>getByUsername(String username){
         try{
-            return new ResponseEntity<AccountUser>(accountUserRepository.findByUsername(email).get(),HttpStatus.OK);
+            return new ResponseEntity<AccountUser>(accountUserRepository.findByUsername(username).get(),HttpStatus.OK);
         }catch (NoSuchElementException exception){
             System.out.println(exception.getMessage());
             return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
@@ -55,7 +55,7 @@ public class AccountUserService {
         user.setFirstName(replacementDetails.getFirstName());
         user.setLastName(replacementDetails.getLastName());
         user.setMiddleName(replacementDetails.getMiddleName());
-        user.setEmail(replacementDetails.getEmail());
+        user.setUsername(replacementDetails.getUsername());
         user.setPassword(replacementDetails.getPassword());
         user.setPhoneNumber(replacementDetails.getPhoneNumber());
 

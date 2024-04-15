@@ -15,7 +15,7 @@ public class AccountUser {
     private String lastName;
     private String middleName;
     @NotNull(message = "email is required")
-    private String email;
+    private String username;
     @NotNull(message = "password is required")
     private String password;
     @NotNull(message = "phone number is required")
@@ -23,11 +23,11 @@ public class AccountUser {
 
     public AccountUser(){}
 
-    public AccountUser(String firstName, String lastName, String middleName, String email, String password, String phoneNumber) {
+    public AccountUser(String firstName, String lastName, String middleName, String username, String password, String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.middleName = middleName;
-        this.email = email;
+        this.username = username;
         this.password = password;
         this.phoneNumber = phoneNumber;
     }
@@ -60,12 +60,12 @@ public class AccountUser {
         this.middleName = middleName;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

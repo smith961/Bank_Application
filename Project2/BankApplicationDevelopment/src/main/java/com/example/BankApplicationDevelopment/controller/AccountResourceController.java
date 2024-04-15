@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/resource")
 public class AccountResourceController {
     @Autowired
-    private AccountUserService accountUserService;
+    private  AccountUserService accountUserService;
 
     @GetMapping("/{id}")
     public ResponseEntity<AccountResource> getAccountResource(@PathVariable int id) {
