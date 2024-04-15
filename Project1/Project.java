@@ -1,4 +1,4 @@
-package Projects.Project1.Project1;
+package Projects.Abdulhakeem_Smith.Project1;
 
 
 import java.io.BufferedReader;
@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.sql.*;
 
 
-public  class Project implements Developers {
+public  class Project implements Projects.Project1.Project1.Developers {
 
     Connection connection = null;
     private void createTable() throws SQLException {
@@ -85,8 +85,8 @@ public  class Project implements Developers {
     }
 
     public static void main(String[] args) {
-        Project project1 = new Project();
-        project1.loadDevelopers();
+        Project project = new Project();
+        project.loadDevelopers();
     }
 
 
