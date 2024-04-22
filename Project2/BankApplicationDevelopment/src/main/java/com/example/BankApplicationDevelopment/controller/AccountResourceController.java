@@ -30,6 +30,8 @@ public class AccountResourceController {
         Link update = WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(AccountUserController.class).updateAccountUser(id, accountUserToCreate)).withRel("update");
         Link allAccountUser = WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(AccountUserController.class).getAllAccountUser()).withRel("allAccountUser");
 
+        accountResource.add(selfLink,delete,update,allAccountUser);
+
         return new ResponseEntity<>(accountResource, HttpStatus.OK);
 
 

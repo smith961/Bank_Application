@@ -38,9 +38,9 @@ public class AccountUserService {
         }
     }
 //getByUsername
-    public ResponseEntity<AccountUser>getByUsername(String username){
+    public ResponseEntity<AccountUser>getByUsername(String email){
         try{
-            return new ResponseEntity<AccountUser>(accountUserRepository.findByUsername(username).get(),HttpStatus.OK);
+            return new ResponseEntity<AccountUser>(accountUserRepository.findByUsername(email).get(),HttpStatus.OK);
         }catch (NoSuchElementException exception){
             System.out.println(exception.getMessage());
             return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
