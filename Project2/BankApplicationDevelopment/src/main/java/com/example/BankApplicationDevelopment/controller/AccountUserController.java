@@ -1,11 +1,13 @@
 package com.example.BankApplicationDevelopment.controller;
 
 import com.example.BankApplicationDevelopment.model.AccountUser;
+import com.example.BankApplicationDevelopment.model.LoginRequest;
+import com.example.BankApplicationDevelopment.model.LoginResponse;
 import com.example.BankApplicationDevelopment.service.AccountUserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,9 +17,10 @@ import java.util.List;
 public class AccountUserController {
 
     @Autowired
-    private  AccountUserService accountUserService;
+    private AccountUserService accountUserService;
 
     @GetMapping("/allAccountUser")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<AccountUser>> getAllAccountUser() {
         return accountUserService.getAllAccountUser();
     }
@@ -34,7 +37,7 @@ public class AccountUserController {
     }
 
     @PostMapping("/addAccountUser")
-    public ResponseEntity<AccountUser> postAccountUser(AccountUser accountUser) {
+    public ResponseEntity<AccountUser> postAccountUser( @RequestBody AccountUser accountUser) {
         return accountUserService.postAccountUser(accountUser);
     }
 
@@ -45,13 +48,16 @@ public class AccountUserController {
 
     }
 
-
-
-@DeleteMapping("/delete/{id}")
-    public ResponseEntity<AccountUser>deleteAccountUser(@PathVariable int id){
-       return accountUserService.deleteAccountUser(id);
+    @PostMapping("/login")
+    public ResponseEntity<LoginResponse> authenticate(@RequestBody LoginRequest loginRequest){
+        return  accountUserService.authenticate(loginRequest);
     }
 
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<AccountUser> deleteAccountUser(@PathVariable int id) {
+        return accountUserService.deleteAccountUser(id);
+    }
 
 
 }
