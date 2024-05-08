@@ -2,13 +2,14 @@ package com.example.BankApplicationDevelopment.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Pattern;
+
 @Entity(name = "accounts")
 public class BankAccount {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Pattern(regexp = "[0-9]{10}")
+
     private String accountNumber;
 
     private double accountBalance;

@@ -6,4 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface BankAccountRespository extends JpaRepository<BankAccount, Integer> {
     BankAccount findByUser(AccountUser user);
+    BankAccount findBankAccountByAccountNumber(String accountNumber);
 }

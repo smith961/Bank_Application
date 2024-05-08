@@ -29,10 +29,13 @@ public class SecurityConfig {
         httpSecurity.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorize ->
                         authorize
-                                .requestMatchers("/accountUser/addAccountUser"/*/accountUser/register*/, "/users/login").permitAll()
+                                .requestMatchers("/users/register", "/users/login").permitAll()
+                                .requestMatchers("/users/").hasAnyAuthority(Role.USER.name())
                                 .requestMatchers("/accountUser/allAccountUser").hasAnyAuthority(Role.ADMIN.name())
                                 .anyRequest().authenticated())
+//                .cors(AbstractHttpConfigurer::disable) //if you have issues with cors
                 .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authenticationProvider(authenticationProvider)
                 .addFilterBefore(bankApplicationFilter, UsernamePasswordAuthenticationFilter.class)
                 .httpBasic(Customizer.withDefaults());
 
